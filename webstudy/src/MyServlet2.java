@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.Map;
 
 @WebServlet("/register")
 public class MyServlet2 extends HttpServlet {
@@ -15,7 +14,9 @@ public class MyServlet2 extends HttpServlet {
         System.out.println(req.getParameter("username"));
         String[] hobbies = req.getParameterValues("hobby");
 
-        resp.setContentType("text/html;charset=UTF-8");
+        req.setCharacterEncoding("utf-8");
+        resp.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html:charset=utf-8");
 
         for (String  str:hobbies
              ) {
@@ -25,10 +26,12 @@ public class MyServlet2 extends HttpServlet {
         Enumeration<String> parameterNames = req.getParameterNames();
 
         while (parameterNames.hasMoreElements()){
-            System.out.println(parameterNames.nextElement());
+            String s = parameterNames.nextElement();
+            String parameter = req.getParameter(s);
+            System.out.println(s+":"+parameter);
+            System.out.println("------------");
         }
 
-        Map<String, String[]> parameterMap = req.getParameterMap();
 
 
 
@@ -38,6 +41,6 @@ public class MyServlet2 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req,resp);
+        this.doGet(req,resp);
     }
 }

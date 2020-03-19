@@ -11,7 +11,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <form action="/register" method="post">
+  <form action="/day19" method="post">
     用户名<input type="text" name="username">
     密码<input type="password" name="password">
     爱好<input type="checkbox" name="hobby" value="篮球">篮球<input type="checkbox" name="hobby" value="足球">足球
